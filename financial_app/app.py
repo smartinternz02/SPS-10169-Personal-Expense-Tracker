@@ -5,14 +5,14 @@ from flask_mail import Mail,Message
 app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = "remotemysql.com"
-app.config['MYSQL_USER'] = 'fCriHTifRu'
-app.config['MYSQL_PASSWORD'] = 'hfS0Qykdjb'
-app.config['MYSQL_DB'] = 'fCriHTifRu'
+app.config['MYSQL_USER'] = '#user'
+app.config['MYSQL_PASSWORD'] = '#password'
+app.config['MYSQL_DB'] = '#db_name'
 
 app.config["MAIL_SERVER"] = 'smtp.gmail.com'
 app.config['MAIL_PORT']=465
-app.config['MAIL_USERNAME']="masteravanger2@gmail.com"
-app.config['MAIL_PASSWORD']=  "Spider@2002"
+app.config['MAIL_USERNAME']=#Email"
+app.config['MAIL_PASSWORD']=  "#password"
 app.config["MAIL_USE_TLS"]= False
 app.config["MAIL_USE_SSL"]=True
 mail1 = Mail(app)
@@ -117,7 +117,7 @@ def login():
                 else:
                     return render_template('main.html')
             elif(float(limits1[-1][-1])<float(amount[0][0])):
-                message = Message("Expenses Reminder",sender="masteravanger2@gmail.com",recipients=[session['email']])
+                message = Message("Expenses Reminder",sender="#sender_mail",recipients=[session['email']])
                 message.body = "This Email is To Intemiate You that your expenses raises its limits. That is your prefeered limits are "+str(limits1[-1][-1])+". But the Total amount spend was "+str(amount[0][0])+" Thank you"
                 mail1.send(message)
 
@@ -162,7 +162,7 @@ def display():
             else:
                 return render_template('main.html')
         elif(float(limits1[-1][-1]) < float(amount[0][0])):
-            message = Message("Expenses Reminder",sender="masteravanger2@gmail.com",recipients=[session['email']])
+            message = Message("Expenses Reminder",sender="#sender_mail",recipients=[session['email']])
             message.body = "This Email is To Intemiate You that your expenses raises its limits. That is your prefeered limits are "+str(limits1[-1][-1])+". But the Total amount spend was "+str(amount[0][0])+" Thank you"
             mail1.send(message)
         mysql.connection.commit()
@@ -200,7 +200,7 @@ def display1():
             else:
                 return render_template('main.html')
         elif(float(limits1[-1][-1])<float(amount[0][0])):
-            message = Message("Expenses Reminder",sender="masteravanger2@gmail.com",recipients=[session['email']])
+            message = Message("Expenses Reminder",sender="#Sender_mail",recipients=[session['email']])
             message.body = "This Email is To Intemiate You that your expenses raises its limits. That is your prefeered limits are "+str(limits1[-1][-1])+". But the Total amount spend was "+str(amount[0][0])+" Thank you"
             mail1.send(message)
         mysql.connection.commit()
