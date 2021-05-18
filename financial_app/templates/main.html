@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+  <link href="/static/css/main.css" rel="stylesheet" >
+  
+</head>
+<body>
+    <div class="dropdown" >
+        <button class="dropbtn">Menu</button>
+          <div class="dropdown-content">
+            <a href="/logout" method='POST'>Logout</a>
+          </div>
+    </div>
+          <form class="form1" action="/display1" method="POST">
+            <div class="row">
+            <div class="col">
+              <br>
+              <label><b>Limit Per Month</b></label>
+              <input type="number" step = "1" name="limit" required>
+            </div>
+            <h2 class="text-right text-white pt-10" >   
+              <button class="float-center submit-button" id="button1" >Set Limit</button>
+            </h2>
+            </div>
+          </form>
+          <form class="form1" action="/delete" method='POST' >
+            <div>
+            <h2 class="text-center text-white pt-8" >   
+              <button class="float-center submit-button" id="button3" >Delete All Records</button>
+            </h2>
+            </div>
+          </form>
+          <form action="/display" class="form1" method="POST">
+            <br>
+            <h2><div class="main" >Track Your Expenses</div></h2>
+            <br>
+              <div class="row">
+                <div class="col"> 
+                  <label><b>Expense Type</b></label>
+                  <br>
+                  <select name="type">
+                      <option value="study">Study</option>
+                      <option value="vegetables">Vegetables</option>
+                      <option value="fruits">Fruits</option>
+                      <option value="milk">Milk</option>
+                      <option value="break_fast">Break Fast</option>
+                      <option value="lunch">Lunch</option>
+                      <option value="dinner">Dinner</option>
+                      <option value="shopping">Shopping</option>
+                      <option value="theater">Theater</option>
+                      <option value="housing">Housing</option>
+                      <option value="medicine">Medicine</option>
+                      <option value="others">Others</option>
+                  </select>
+                </div>
+                
+                <div class="col"> 
+                  <label><b>Expenses</b></label><br>
+                  <input type="number" class ="no-outline" step="1" name="exp" required>
+                </div>
+
+                <div class="col"> 
+                  <label><b>Description about expense</b></label><br>
+                  <input type="text"  name="description" required>
+                </div>
+                <div>
+                <h2 class="text-right text-white pt-10" >   
+                  <button class="float-right submit-button" id="button3" >submit</button>
+                </h2>
+              </div>
+                <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <h3>{{amount}}</h3>
+              <table>
+              <th>Spended</th><th>Amount</th><th>Description</th>
+              {%for i in pred%}
+                <tr>
+                    <b>
+                    <td><b>{{i[3]}}Rs</b></td>
+                    <td>{{i[2]}}</td>
+                    <td><b>{{i[4]}}</b></td>
+                    </b>
+                </tr>
+                {%endfor%}
+            </table>
+          </div>
+            <br>
+      </form>
+  </div>
+</body>
+</html>
